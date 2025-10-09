@@ -1,0 +1,14 @@
+h1 {
+    color: rgba(35, 90, 209, 0.57);
+    background-color: khaki;
+}
+p {
+    color:aquamarine;
+}
+.larger-text {
+    font-size: larger;
+    border: 1px solid red;
+}
+.orange {
+    color: orange;
+}
