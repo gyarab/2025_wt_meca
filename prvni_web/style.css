@@ -1,14 +1,29 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
 h1 {
-    color: rgba(35, 90, 209, 0.57);
-    background-color: khaki;
+    color: #2c3e50;
+    text-align: center;
 }
+
 p {
-    color:aquamarine;
+    color: #333;
+    margin: 20px;
 }
-.larger-text {
-    font-size: larger;
-    border: 1px solid red;
+
+nav {
+    background: #2c3e50;
+    padding: 10px;
 }
-.orange {
-    color: orange;
+
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
