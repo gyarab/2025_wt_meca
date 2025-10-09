@@ -1,29 +1,14 @@
-body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
-
 h1 {
-    color: #2c3e50;
-    text-align: center;
+    color: rgba(171, 25, 181, 0.548);
+    background-color: aquamarine;
 }
-
 p {
-    color: #333;
-    margin: 20px;
+    color: aquamarine;
 }
-
-nav {
-    background: #2c3e50;
-    padding: 10px;
+.larger-text {
+    font-size: larger;
+    border: 1px solid red;
 }
-
-nav a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    text-decoration: underline;
+.orange {
+    color: orange;
 }
