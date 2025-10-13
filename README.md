@@ -1,2 +1,9 @@
-To je můj repositář na předmět WT na školní rok 2025/2026, který obsahuje 2 soubory a 1 složku.
+# 2025 WT Meca
+
+Toto je pracovní repozitář pro předmět Webové technologie 2.F na Gymnáziu Arabská, školní rok 2025/2026.
+
+Repozitář obsahuje:
+- Ukázkový referát v souboru `referaty.md`.
+- První prolinkovaný web na pokusy s Bootrapem v adresáři `prvni_web/`.
+
 
