@@ -5,6 +5,6 @@ Toto je pracovní repozitář pro předmět Webové technologie 2.F na Gymnáziu
 Repozitář obsahuje:
 - Ukázkový referát v souboru `referaty.md`.
 - První HTML soubor v souboru `pokus.html`.
-- První prolinkovaný web na pokusy s Bootrapem v adresáři `prvni_web/`.
+- První prolinkovaný web na pokusy s Bootrapem 5.3.8 v adresáři `prvni_web/`.
 
 
