@@ -40,7 +40,7 @@ V roce 1983 byl spolu s [Kenem Thompsonem](https://cs.wikipedia.org/wiki/Ken_Tho
 | 1998 | Oceněn Národní medailí za technologii        |
 | 2011 | Zemřel ve věku 70 let                        |
 
-##Zdroje
+## Zdroje
 [](https://www.nytimes.com/2011/10/14/technology/dennis-ritchie-programming-trailblazer-dies-at-70.html?hp#)
 [](https://cs.wikipedia.org/wiki/Dennis_Ritchie)
 [](http://databazeknih.cz/zivotopis/dennis-ritchie-64178)
