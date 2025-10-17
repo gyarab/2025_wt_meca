@@ -45,7 +45,7 @@ V roce 1983 byl spolu s [Kenem Thompsonem](https://cs.wikipedia.org/wiki/Ken_Tho
 - vystudoval fyziku a aplikovanou matematiku na Harvardově univerzitě
 - spolutvůrce operačního systému UNIX
 - 1967 zaměstnán v počítačovém výzkumném studiu Bell Labs jako ředitel oddělení výzkumu systémového software u společnosti Lucent Technologies 
-- na začátku 70.let 20.století navrhl programovací jazyk C
+- na začátku 70. let 20. století navrhl programovací jazyk C
 - 1978 vytvořil spolu s Brianem Kernighanem základní referenční příručku o tomto jazyce
 - 1983 spolu s Kenem Thompsonem oceněn Turingovou cenou za implementaci operačního systému UNIX
 - 1999 jim Bill Clinton udělil Národní vyznamenání za techniku
