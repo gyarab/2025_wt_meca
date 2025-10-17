@@ -40,6 +40,16 @@ V roce 1983 byl spolu s [Kenem Thompsonem](https://cs.wikipedia.org/wiki/Ken_Tho
 | 1998 | Oceněn Národní medailí za technologii        |
 | 2011 | Zemřel ve věku 70 let                        |
 
+## Závěr
+
+- vystudoval fyziku a aplikovanou matematiku na Harvardově univerzitě
+- spolutvůrce operačního systému UNIX
+- 1967 zaměstnán v počítačovém výzkumném studiu Bell Labs jako ředitel oddělení výzkumu systémového software u společnosti Lucent Technologies 
+- na zač. 70.let 20. stol. navrhl programovací jazyk C
+- 1978 vytvořil spolu s Brianem Kernighanem základní referenční příručku o tomto jazyce
+- 1983 spolu s Kenem Thompsonem oceněn Turingovou cenou za implementaci operačního systému UNIX
+- 1999 jim Bill Clinton udělil Národní vyznamenání za techniku
+
 ## Zdroje
 
 - https://www.nytimes.com/2011/10/14/technology/dennis-ritchie-programming-trailblazer-dies-at-70.html?hp#
