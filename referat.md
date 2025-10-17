@@ -42,9 +42,9 @@ V roce 1983 byl spolu s [Kenem Thompsonem](https://cs.wikipedia.org/wiki/Ken_Tho
 
 ## Zdroje
 
-- [1.](https://www.nytimes.com/2011/10/14/technology/dennis-ritchie-programming-trailblazer-dies-at-70.html?hp#)
-- [2.](https://cs.wikipedia.org/wiki/Dennis_Ritchie)
-- (http://databazeknih.cz/zivotopis/dennis-ritchie-64178)
+- https://www.nytimes.com/2011/10/14/technology/dennis-ritchie-programming-trailblazer-dies-at-70.html?hp#
+- https://cs.wikipedia.org/wiki/Dennis_Ritchie
+- http://databazeknih.cz/zivotopis/dennis-ritchie-64178
 
 
 
