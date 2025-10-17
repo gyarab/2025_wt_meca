@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐶 Psí Hotel Čtyřlístek 🍀</title>
+    <style>
+        /* Základní styly pro lepší čitelnost */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50; /* Zelená barva */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 30px;
+        }
+         
+
+
+        /* Sekce - Tlačítko (CTA) */
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background-color: #e0f7fa; /* Světle modrý podklad */
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FF9800; /* Oranžová barva CTA */
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #f57c00;
+        }
+
+        /* Sekce - Galerie */
+         .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+         }
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+         .gallery-item {
+            cursor: pointer; /* Změna kurzoru naznačující, že se dá kliknout */
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+         }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Aby obrázky vypadaly dobře v miniaturách */
+            transition: transform 0.3s;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        /* Styly pro lightbox (modal) */
+        .lightbox-modal {
+            display: none; /* Standardně skryté */
+            position: fixed; /* Zůstává na místě i při scrollování */
+            z-index: 1000; /* Ujistí se, že je nad vším ostatním */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Povolí scrollování, pokud je třeba */
+            background-color: rgba(0, 0, 0, 0.9); /* Černé s průhledností */
+            backdrop-filter: blur(5px); /* Jemné rozostření pozadí */  
+        }
+        .modal-content {
+            margin: 10% auto; /* 10% odshora a vycentrováno */
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation: zoom 0.6s;
+        }
+
+        /* Animace pro plynulé zobrazení */
+        @keyframes zoom {
+            from {transform: scale(0.1)} 
+            to {transform: scale(1)}
+        }
+
+        /* Křížek pro zavření */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Sekce - Mapa */
+        .map-placeholder {
+            height: 300px;
+            background-color: #ccc;
+            line-height: 300px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        /* Sekce - Kontakty a náležitosti */
+        .contacts {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .contacts p {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+        /* Nové styly pro obal mapy a pin */
+.map-wrapper {
+    position: relative;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.location-pin {
+    position: absolute;
+    top: 50%; /* Umístí pin do středu (vertikálně) */
+    left: 50%; /* Umístí pin do středu (horizontálně) */
+    transform: translate(-50%, -100%); /* Posun nahoru, aby hrot pinu ukazoval na střed */
+    font-size: 3.5em; /* Větší velikost pinu */
+    color: #D32F2F; /* Sytě červená barva (často používaná pro mapy) */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Jemný stín pro vystoupení */
+    z-index: 500;
+    pointer-events: none;
+    line-height: 1; /* Zajistí, že se pin nepřesune kvůli řádkování */
+}
+/* Přidáme kód pro klasický špendlík (nepovinné, záleží na fontu) */
+.pin-icon {
+    display: block;
+    transform: rotate(45deg); /* Otočení symbolu špendlíku */
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1> 🐶 Psí Hotel Čtyřlístek 🍀</h1>
+        <p>Váš pes u nás bude jako v bavlnce!</p>
+        <nav>
+            <a href="#o-nas">O nás</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#cenik">Ceník</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section id="rezervace" class="cta-section">
+            <h2>Nezávazná rezervace pobytu</h2>
+            <p>Máte dotazy nebo chcete rovnou rezervovat místo pro vašeho mazlíčka?</p>
+            <a href="tel:+420123456789" class="cta-button">ZAVOLEJTE NÁM TEĎ!</a>
+        </section>
+
+        <section id="o-nas">
+            <h2>Proč si vybrat nás?</h2>
+            <p>Jsme rodinný psí hotel s více než 10 lety zkušeností. Nabízíme individuální přístup, celodenní dohled a velké výběhy pro volné hraní. U nás je každý pes šťastný!</p>
+        </section>
+        <section id="galerie">
+            <h2> 🐶 Naše galerie psího hotelu</h2>
+
+            <div class="gallery-container">
+                 <div class="gallery-item" onclick="openLightbox('https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg')">
+            <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg" alt="Standardní pokoj">
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('https://muas.pincity.cz/upload/.thumbs/agility_prvky.og.png')">
+            <img src="https://muas.pincity.cz/upload/.thumbs/agility_prvky.og.png" alt="Velký venkovní výběh">
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox('https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg')">
+            <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg" alt="Čas krmení">
+        </div>
+    </div>
+
+        <div id="myLightbox" class="lightbox-modal">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        
+        <img class="modal-content" id="lightboxImage">
+    </div>
+
+      <script>
+        // Funkce pro otevření Lightboxu
+        function openLightbox(src) {
+            const modal = document.getElementById("myLightbox");
+            const img = document.getElementById("lightboxImage");
+            
+            // Nastaví zdroj zvětšeného obrázku
+            img.src = src;
+            
+            // Zobrazí modal
+            modal.style.display = "block";
+        }
+
+        // Funkce pro zavření Lightboxu
+        function closeLightbox() {
+            const modal = document.getElementById("myLightbox");
+            modal.style.display = "none";
+        }
+
+        // Zavřít modal po kliknutí mimo obrázek (kdekoliv na pozadí)
+        window.onclick = function(event) {
+            const modal = document.getElementById("myLightbox");
+            if (event.target == modal) {
+                closeLightbox();
+            }
+        }
+    </script>
+     
+        </section>
+
+       <section id="mapa">
+            <h2>Kde nás najdete</h2>
+            
+            <div class="map-wrapper">
+        <div class="location-pin">
+            &#x1F4CD; </div>
+
+            <div style="margin-top: 20px; border: 1px solid #ccc; border-radius: 8px; overflow: hidden;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.7135891461414!2d14.41854041571732!3d50.0880190794276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94ee09b55555%3A0x6d9f4c3a3b5c3d2e!2sPraha!5e0!3m2!1scs!2scz!4v1634454000000!5m2!1scs!2scz" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </div>
+            <p style="text-align: center; margin-top: 10px;">Přesná adresa: Lesní 5, 123 45 Psíkov</p>
+        </section>
+
+        <section id="kontakt" class="contacts">
+            <h2>Kontaktní informace a Provozní doba</h2>
+            <p><strong>Adresa:</strong> Lesní 5, 123 45 Psíkov</p>
+            <p><strong>Telefon:</strong> +420 123 456 789</p>
+            <p><strong>Email:</strong> info@psihotelctyrlistek.cz</p>
+            <hr>
+            <p><strong>Provozní doba:</strong></p>
+            <ul>
+                <li>Pondělí - Pátek: 8:00 - 18:00 (Příjem/Výdej)</li>
+                <li>Sobota: 9:00 - 12:00 (Příjem/Výdej)</li>
+                <li>Neděle: Pouze po domluvě</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Psí Hotel Čtyřlístek. Všechna práva vyhrazena.</p>
+    </footer>
+
+</body>
+</html>
+
