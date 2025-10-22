@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🐶 Psí Hotel Čtyřlístek 🍀</title>
+    <meta name="description" content="Vítejte v Psím Hotelu Čtyřlístek - profesionální péče o vašeho mazlíčka s láskou a individuálním přístupem. Rezervujte nyní!"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- (Volitelné) Bootstrap JS a Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
+        /* Box sizing and base */
+        *, *::before, *::after { box-sizing: border-box; }
+
         /* Základní styly pro lepší čitelnost */
         body {
             font-family: Arial, sans-serif;
@@ -26,8 +36,9 @@
             font-weight: bold;
         }
         .container {
-            width: 80%;
-            margin: auto;
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
             overflow: hidden;
             padding: 20px 0;
         }
@@ -75,14 +86,17 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-         .gallery-item {
-            cursor: pointer; /* Změna kurzoru naznačující, že se dá kliknout */
-            width: 200px;
-            height: 150px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-         }
+            .gallery-item {
+                cursor: pointer; /* Změna kurzoru naznačující, že se dá kliknout */
+                width: 200px;
+                height: 150px;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border: none; /* when using button */
+                background: none;
+                padding: 0;
+            }
         .gallery-item img {
             width: 100%;
             height: 100%;
@@ -96,7 +110,6 @@
         .lightbox-modal {
             display: none; /* Standardně skryté */
             position: fixed; /* Zůstává na místě i při scrollování */
-            z-index: 1000; /* Ujistí se, že je nad vším ostatním */
             left: 0;
             top: 0;
             width: 100%;
@@ -104,14 +117,22 @@
             overflow: auto; /* Povolí scrollování, pokud je třeba */
             background-color: rgba(0, 0, 0, 0.9); /* Černé s průhledností */
             backdrop-filter: blur(5px); /* Jemné rozostření pozadí */  
+            z-index: 1000; /* Ujistí se, že je nad vším ostatním */
+        }
+        .lightbox-modal.show .close-btn {
+        opacity: 1;
         }
         .modal-content {
-            margin: 10% auto; /* 10% odshora a vycentrováno */
+            margin: 8% auto; /* 8% odshora a vycentrováno */
             display: block;
             width: 80%;
-            max-width: 700px;
+            max-width: 900px;
+            max-height: calc(100vh - 120px);
+            object-fit: contain;
             animation: zoom 0.6s;
         }
+
+        .modal-content img { max-width: 100%; height: auto; display:block; }
 
         /* Animace pro plynulé zobrazení */
         @keyframes zoom {
@@ -127,8 +148,10 @@
             color: #f1f1f1;
             font-size: 40px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
+            opacity: 1;
+            transition : opacity 0.3s ease;
+            z-index: 1100; /* Ujistí se, že je nad obrázkem */
         }
         .close-btn:hover,
         .close-btn:focus {
@@ -136,6 +159,7 @@
             text-decoration: none;
             cursor: pointer;
         }
+        
 
         /* Sekce - Mapa */
         .map-placeholder {
@@ -148,6 +172,20 @@
             margin-top: 20px;
             border-radius: 8px;
         }
+
+/* Nové styly pro obal mapy a pin (moved from inline) */
+.map-frame {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.map-frame iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    display: block;
+}
 
         /* Sekce - Kontakty a náležitosti */
         .contacts {
@@ -175,23 +213,7 @@
     border-radius: 8px;
     overflow: hidden;
 }
-.location-pin {
-    position: absolute;
-    top: 50%; /* Umístí pin do středu (vertikálně) */
-    left: 50%; /* Umístí pin do středu (horizontálně) */
-    transform: translate(-50%, -100%); /* Posun nahoru, aby hrot pinu ukazoval na střed */
-    font-size: 3.5em; /* Větší velikost pinu */
-    color: #D32F2F; /* Sytě červená barva (často používaná pro mapy) */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Jemný stín pro vystoupení */
-    z-index: 500;
-    pointer-events: none;
-    line-height: 1; /* Zajistí, že se pin nepřesune kvůli řádkování */
-}
-/* Přidáme kód pro klasický špendlík (nepovinné, záleží na fontu) */
-.pin-icon {
-    display: block;
-    transform: rotate(45deg); /* Otočení symbolu špendlíku */
-}
+
     </style>
 </head>
 <body>
@@ -212,7 +234,7 @@
         <section id="rezervace" class="cta-section">
             <h2>Nezávazná rezervace pobytu</h2>
             <p>Máte dotazy nebo chcete rovnou rezervovat místo pro vašeho mazlíčka?</p>
-            <a href="tel:+420123456789" class="cta-button">ZAVOLEJTE NÁM TEĎ!</a>
+            <a href="tel:+420153456789" class="cta-button">ZAVOLEJTE NÁM TEĎ!</a>
         </section>
 
         <section id="o-nas">
@@ -220,54 +242,85 @@
             <p>Jsme rodinný psí hotel s více než 10 lety zkušeností. Nabízíme individuální přístup, celodenní dohled a velké výběhy pro volné hraní. U nás je každý pes šťastný!</p>
         </section>
         <section id="galerie">
-            <h2> 🐶 Naše galerie psího hotelu</h2>
+    <h2> 🐶 Naše galerie psího hotelu</h2>
 
-            <div class="gallery-container">
-                 <div class="gallery-item" onclick="openLightbox('https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg')">
-            <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg" alt="Standardní pokoj">
-        </div>
+    <div class="gallery-container">
 
-        <div class="gallery-item" onclick="openLightbox('https://muas.pincity.cz/upload/.thumbs/agility_prvky.og.png')">
-            <img src="https://muas.pincity.cz/upload/.thumbs/agility_prvky.og.png" alt="Velký venkovní výběh">
-        </div>
-        
-        <div class="gallery-item" onclick="openLightbox('https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg')">
-            <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg" alt="Čas krmení">
-        </div>
+        <!-- Obrázek 1 -->
+        <button class="gallery-item"
+            onclick="openLightbox('https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg', 'Standardní pokoj')"
+            aria-label="Otevřít obrázek: Standardní pokoj">
+            <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg"
+                alt="Standardní pokoj"
+                loading="lazy">
+        </button>
+
+        <!-- Opravený obrázek 2 - výběh (dříve nefunkční) -->
+        <button class="gallery-item"
+            onclick="openLightbox('https://pixabay.com/get/g24fd2c2f59f6e4a18befec70bd4924992c2ab216fe3aea6f942d1989f00dfb6364c0c03ec67b2b7e8ecaecfa04f5f191447ec20adc2d4e9296b5ee8eef9d5a8d262fbf57ad1ebf3176e49cb8570210a4_640.jpg', 'Velký venkovní výběh')"
+            aria-label="Otevřít obrázek: Velký venkovní výběh">
+            <img src="https://pixabay.com/get/g24fd2c2f59f6e4a18befec70bd4924992c2ab216fe3aea6f942d1989f00dfb6364c0c03ec67b2b7e8ecaecfa04f5f191447ec20adc2d4e9296b5ee8eef9d5a8d262fbf57ad1ebf3176e49cb8570210a4_640.jpg"
+                alt="Velký venkovní výběh"
+                loading="lazy">
+        </button>
+
+        <!-- Obrázek 3 -->
+        <button class="gallery-item"
+            onclick="openLightbox('https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg', 'Čas krmení')"
+            aria-label="Otevřít obrázek: Čas krmení">
+            <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg"
+                alt="Čas krmení"
+                loading="lazy">
+        </button>
+
     </div>
 
-        <div id="myLightbox" class="lightbox-modal">
-        <span class="close-btn" onclick="closeLightbox()">&times;</span>
-        
-        <img class="modal-content" id="lightboxImage">
+    <!-- Lightbox zůstává beze změn -->
+    <div id="myLightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek" tabindex="-1">
+        <button class="close-btn" onclick="closeLightbox()" aria-label="Zavřít náhled">&times;</button>
+        <div class="modal-content" id="lightboxContent">
+            <img id="lightboxImage" alt="Zvětšený obrázek">
+        </div>
     </div>
+</section>
 
       <script>
-        // Funkce pro otevření Lightboxu
-        function openLightbox(src) {
+        // Lightbox accessibility & behavior
+        (function (){
             const modal = document.getElementById("myLightbox");
             const img = document.getElementById("lightboxImage");
-            
-            // Nastaví zdroj zvětšeného obrázku
-            img.src = src;
-            
-            // Zobrazí modal
-            modal.style.display = "block";
-        }
+            let lastActive = null;
 
-        // Funkce pro zavření Lightboxu
-        function closeLightbox() {
-            const modal = document.getElementById("myLightbox");
-            modal.style.display = "none";
-        }
-
-        // Zavřít modal po kliknutí mimo obrázek (kdekoliv na pozadí)
-        window.onclick = function(event) {
-            const modal = document.getElementById("myLightbox");
-            if (event.target == modal) {
-                closeLightbox();
+            window.openLightbox = function(src, alt) {
+                lastActive = document.activeElement;
+                const modal = document.getElementById("myLightbox");
+                const img = document.getElementById("lightboxImage");
+                img.src = src;
+                img.alt = alt || 'Zvětšený obrázek';
+                modal.style.display = 'block';
+                modal.focus();
+                // add key handler
+                document.addEventListener('keydown', onKeyDown);
             }
-        }
+
+            window.closeLightbox = function() {
+                modal.style.display = 'none';
+                img.src = '';
+                document.removeEventListener('keydown', onKeyDown);
+                if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+            }
+
+            function onKeyDown(e){
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+
+            // close when clicking on backdrop (not on content)
+            modal.addEventListener('click', function(e){
+                if (e.target === modal) closeLightbox();
+            });
+        })();
     </script>
      
         </section>
@@ -276,22 +329,49 @@
             <h2>Kde nás najdete</h2>
             
             <div class="map-wrapper">
-        <div class="location-pin">
-            &#x1F4CD; </div>
-
-            <div style="margin-top: 20px; border: 1px solid #ccc; border-radius: 8px; overflow: hidden;">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.7135891461414!2d14.41854041571732!3d50.0880190794276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94ee09b55555%3A0x6d9f4c3a3b5c3d2e!2sPraha!5e0!3m2!1scs!2scz!4v1634454000000!5m2!1scs!2scz" 
-                    width="100%" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <div class="map-frame">
+                    <iframe
+                        title="Mapa lokace Psí Hotel Čtyřlístek"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.1372333062254!2d21.810070688062158!3d48.79835939738533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ecce7b69ff48b%3A0x707cc68166a509e5!2s123%2045%2C%20Lesn%C3%A9%205%2C%20071%2001%20Lesn%C3%A9%2C%20Slovensko!5e0!3m2!1scs!2scz!4v1760715116921!5m2!1scs!2scz"
+                        allowfullscreen = "responsive"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             <p style="text-align: center; margin-top: 10px;">Přesná adresa: Lesní 5, 123 45 Psíkov</p>
         </section>
+
+        <section id="cenik" class = "contacts">
+            <h2>
+                Ceník služeb
+            </h2>
+            <p> 
+                Nabízíme konkurenceschopné ceny za kvalitní péči o vašeho mazlíčka:
+            </p>
+             <ul>
+                <li>Denní pobyt: 300 Kč/den</li>
+                <li>Celodenní péče s ubytováním: 600 Kč/den</li>
+                <li>Speciální péče (léky, diety): +150 Kč/den</li>
+                <li>Slevy pro dlouhodobé pobyty (více než 7 dní): 10% sleva</li>  
+            </ul>
+            <hr>
+            <p>Pro více informací nás neváhejte kontaktovat!</p>
+        
+        </section>
+
+        <section id="video">
+    <h2>🎥 Podívejte se na náš psí hotel v akci!</h2>
+    <div style="text-align: center; margin-top: 20px;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2qudlMlXa_4"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+    </section>
+
+
+
 
         <section id="kontakt" class="contacts">
             <h2>Kontaktní informace a Provozní doba</h2>
