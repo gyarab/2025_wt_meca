@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🐶 Psí Hotel Čtyřlístek 🍀</title>
-    <meta name="description" content="Vítejte v Psím Hotelu Čtyřlístek - profesionální péče o vašeho mazlíčka s láskou a individuálním přístupem. Rezervujte nyní!"/>
+    <meta name="description"
+        content="Vítejte v Psím Hotelu Čtyřlístek - profesionální péče o vašeho mazlíčka s láskou a individuálním přístupem. Rezervujte nyní!" />
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
     <!-- (Volitelné) Bootstrap JS a Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
     <!-- Prevent automatic scroll to anchor on page load -->
     <script>
         if (window.location.hash) {
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 window.scrollTo(0, 0);
             }, 1);
         }
@@ -22,28 +27,42 @@
 
     <style>
         /* Box sizing and base */
-        *, *::before, *::after { box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* Video section centering */
+        .video-center {
+            text-align: center;
+            margin-top: 20px;
+        }
 
         /* Základní styly pro lepší čitelnost */
         body {
-            font-family: 'Inter',Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
         }
+
         header {
-            background-color: #4CAF50; /* Zelená barva */
+            background-color: #4CAF50;
+            /* Zelená barva */
             color: white;
             padding: 20px 0;
             text-align: center;
         }
+
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
         }
+
         .container {
             width: 90%;
             max-width: 1100px;
@@ -51,26 +70,30 @@
             overflow: hidden;
             padding: 20px 0;
         }
+
         h2 {
             color: #4CAF50;
             text-align: center;
             margin-top: 30px;
         }
-         
+
 
 
         /* Sekce - Tlačítko (CTA) */
         .cta-section {
             text-align: center;
             padding: 40px;
-            background-color: #e0f7fa; /* Světle modrý podklad */
+            background-color: #e0f7fa;
+            /* Světle modrý podklad */
             margin-top: 20px;
             border-radius: 8px;
         }
+
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #FF9800; /* Oranžová barva CTA */
+            background-color: #FF9800;
+            /* Oranžová barva CTA */
             color: white;
             text-decoration: none;
             font-size: 1.5em;
@@ -78,65 +101,82 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
+
         .cta-button:hover {
             background-color: #f57c00;
         }
 
         /* Sekce - Galerie */
-         .gallery-container {
+        .gallery-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
             padding: 20px;
-         }
+        }
+
         .gallery {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             margin-top: 20px;
         }
-            .gallery-item {
-                position: relative;
-                cursor: pointer; /* Změna kurzoru naznačující, že se dá kliknout */
-                width: 250px;
-                aspect-ratio: 4/3;
-                height: 150px;
-                overflow: hidden;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                border: none; /* when using button */
-                background: none;
-                padding: 0;
-            }
+
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            /* Změna kurzoru naznačující, že se dá kliknout */
+            width: 250px;
+            aspect-ratio: 4/3;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            /* when using button */
+            background: none;
+            padding: 0;
+        }
+
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Aby obrázky vypadaly dobře v miniaturách */
+            object-fit: cover;
+            /* Aby obrázky vypadaly dobře v miniaturách */
             transition: transform 0.3s;
         }
+
         .gallery-item img:hover {
             transform: scale(1.05);
         }
-        
+
         /* Styly pro lightbox (modal) */
         .lightbox-modal {
-            display: none; /* Standardně skryté */
-            position: fixed; /* Zůstává na místě i při scrollování */
+            display: none;
+            /* Standardně skryté */
+            position: fixed;
+            /* Zůstává na místě i při scrollování */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Povolí scrollování, pokud je třeba */
-            background-color: rgba(0, 0, 0, 0.9); /* Černé s průhledností */
-            backdrop-filter: blur(5px); /* Jemné rozostření pozadí */  
-            z-index: 1000; /* Ujistí se, že je nad vším ostatním */
+            overflow: auto;
+            /* Povolí scrollování, pokud je třeba */
+            background-color: rgba(0, 0, 0, 0.9);
+            /* Černé s průhledností */
+            backdrop-filter: blur(5px);
+            /* Jemné rozostření pozadí */
+            z-index: 1000;
+            /* Ujistí se, že je nad vším ostatním */
         }
+
         .lightbox-modal.show .close-btn {
-        opacity: 1;
+            opacity: 1;
         }
+
         .modal-content {
-            margin: 8% auto; /* 8% odshora a vycentrováno */
+            margin: 8% auto;
+            /* 8% odshora a vycentrováno */
             display: block;
             width: 80%;
             max-width: 900px;
@@ -145,12 +185,21 @@
             animation: zoom 0.6s;
         }
 
-        .modal-content img { max-width: 100%; height: auto; display:block; }
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
         /* Animace pro plynulé zobrazení */
         @keyframes zoom {
-            from {transform: scale(0.1)} 
-            to {transform: scale(1)}
+            from {
+                transform: scale(0.1)
+            }
+
+            to {
+                transform: scale(1)
+            }
         }
 
         /* Křížek pro zavření */
@@ -163,16 +212,18 @@
             font-weight: bold;
             cursor: pointer;
             opacity: 1;
-            transition : opacity 0.3s ease;
-            z-index: 1100; /* Ujistí se, že je nad obrázkem */
+            transition: opacity 0.3s ease;
+            z-index: 1100;
+            /* Ujistí se, že je nad obrázkem */
         }
+
         .close-btn:hover,
         .close-btn:focus {
             color: #bbb;
             text-decoration: none;
             cursor: pointer;
         }
-        
+
 
         /* Sekce - Mapa */
         .map-placeholder {
@@ -186,19 +237,20 @@
             border-radius: 8px;
         }
 
-/* Nové styly pro obal mapy a pin (moved from inline) */
-.map-frame {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-}
-.map-frame iframe {
-    width: 100%;
-    height: 450px;
-    border: 0;
-    display: block;
-}
+        /* Nové styly pro obal mapy a pin (moved from inline) */
+        .map-frame {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            display: block;
+        }
 
         /* Sekce - Kontakty a náležitosti */
         .contacts {
@@ -207,27 +259,33 @@
             border-radius: 8px;
             margin-top: 30px;
         }
+
         .contacts p {
             line-height: 1.6;
         }
+
         .contact-container {
-    width: 60%;              /* šířka obsahu (můžeš upravit) */
-    margin: 0 auto;          /* zarovnání na střed */
-    text-align: left;        /* text zarovnaný vlevo uvnitř */
-    }
+            width: 60%;
+            /* šířka obsahu (můžeš upravit) */
+            margin: 0 auto;
+            /* zarovnání na střed */
+            text-align: left;
+            /* text zarovnaný vlevo uvnitř */
+        }
 
-    .contact-container h2 {
-    color: #4CAF50;
-    text-align: center;      /* nadpisy na střed */
-    margin-top: 40px;
-    margin-bottom: 20px;
-    }
+        .contact-container h2 {
+            color: #4CAF50;
+            text-align: center;
+            /* nadpisy na střed */
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
 
-    form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
         footer {
             text-align: center;
@@ -236,17 +294,18 @@
             color: white;
             margin-top: 40px;
         }
-        /* Nové styly pro obal mapy a pin */
-.map-wrapper {
-    position: relative;
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-}
 
+        /* Nové styly pro obal mapy a pin */
+        .map-wrapper {
+            position: relative;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -262,199 +321,213 @@
 
     <div class="container">
 
-             <section id="rezervace" class="cta-section">
-           
+        <section id="rezervace" class="cta-section">
+
             <h2>Nezávazná rezervace pobytu</h2>
             <p>Máte dotazy nebo chcete rovnou rezervovat místo pro vašeho mazlíčka?</p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="tel:+420153456789" class="cta-button">ZAVOLEJTE NÁM TEĎ!</a>
-              <!-- jednoduchý newsletter / kontaktní formulář -->
-              <p></p>
-              
-              <form class="d-flex align-items-center" onsubmit="event.preventDefault(); alert('Děkujeme za přihlášení!');">
-                  <label for="newsletterEmail" class="visually-hidden">Email</label>
-                  <input id="newsletterEmail" type="email" class="form-control" placeholder="Váš email" required style="min-width:220px;">
-                  <button class="btn btn-warning ms-2" type="submit">Přihlásit</button>
-               </form>
-           </div>
-         </section>
+                <!-- jednoduchý newsletter / kontaktní formulář -->
+                <p></p>
 
-        <section id="o-nas">
-            <h2>Proč si vybrat nás?</h2>
-            <p>Jsme rodinný psí hotel s více než 10 lety zkušeností. Nabízíme individuální přístup, celodenní dohled a velké výběhy pro volné hraní. U nás je každý pes šťastný!</p>
-        </section>
-       <!-- Služby / Grid s kartami (responzivní) -->
-      <section id="sluzby" class="mt-4">
-           <div class="container">
-               <h2 class="text-center">Naše služby</h2>
-               <div class="row g-4 mt-3">
-                   <div class="col-12 col-md-6 col-lg-4">
-                       <div class="card h-100">
-                           <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg" class="card-img-top img-fluid" alt="Ubytování">
-                           <div class="card-body d-flex flex-column">
-                               <h5 class="card-title">Komfortní ubytování</h5>
-                               <p class="card-text flex-grow-1">Soukromé pelechy, pravidelné venčení a klidné noci.</p>
-                               <a href="#cenik" class="btn btn-sm btn-outline-success mt-2">Více</a>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="col-12 col-md-6 col-lg-4">
-                       <div class="card h-100">
-                           <img src="https://cdn.pixabay.com/photo/2015/05/01/10/38/agility-748245_640.jpg" class="card-img-top img-fluid" alt="Výběhy">
-                           <div class="card-body d-flex flex-column">
-                               <h5 class="card-title">Velké výběhy</h5>
-                               <p class="card-text flex-grow-1">Zabezpečené plochy pro volné hrátky a socializaci psů.</p>
-                               <a href="#galerie" class="btn btn-sm btn-outline-success mt-2">Galerie</a>
-                          </div>
-                      </div>
-                  </div>
-                   <div class="col-12 col-md-6 col-lg-4">
-                       <div class="card h-100">
-                           <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg" class="card-img-top img-fluid" alt="Péče">
-                           <div class="card-body d-flex flex-column">
-                               <h5 class="card-title">Individuální péče</h5>
-                               <p class="card-text flex-grow-1">Speciální dietní plány, podávání léků a denní reporty.</p>
-                               <a href="#kontakt" class="btn btn-sm btn-outline-success mt-2">Kontakt</a>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
-
-        <section id="galerie">
-    <h2> 🐶 Naše galerie psího hotelu</h2>
-
-    <div class="gallery-container">
-
-        <!-- Obrázek 1 -->
-        <button class="gallery-item"
-            onclick="openLightbox('https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg', 'Standardní pokoj')"
-            aria-label="Otevřít obrázek: Standardní pokoj">
-            <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg"
-                alt="Standardní pokoj"
-                loading="lazy">
-        </button>
-        <!-- Opravený obrázek 2 – výběh -->
-    <button class="gallery-item"
-        onclick="openLightbox('https://pixabay.com/get/g29b0474372a19ee312843b5db349a890ef7520e6e1be698c5d16a8c6c43f8b9ab7181091afa0771e9dac49c07837b968b55fbfe263dd125f113a155ac4af4925639f4df1c75f556cef47b00c6ddff2c3_640.jpg','Velký venkovní výběh')"
-        aria-label="Otevřít obrázek: Velký venkovní výběh">
-        <img src="https://pixabay.com/get/g29b0474372a19ee312843b5db349a890ef7520e6e1be698c5d16a8c6c43f8b9ab7181091afa0771e9dac49c07837b968b55fbfe263dd125f113a155ac4af4925639f4df1c75f556cef47b00c6ddff2c3_640.jpg" 
-             alt="Velký venkovní výběh"
-            loading="lazy"
-            style="object-fit: cover; width: 100%; height: 100%; object-position: center;">
-        </button>
-
-
-        <!-- Obrázek 3 -->
-        <button class="gallery-item"
-            onclick="openLightbox('https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg', 'Čas krmení')"
-            aria-label="Otevřít obrázek: Čas krmení">
-            <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg"
-                alt="Čas krmení"
-                loading="lazy">
-        </button>
-
-    </div>
-
-    <!-- Lightbox zůstává beze změn -->
-    <div id="myLightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek" tabindex="-1">
-        <button class="close-btn" onclick="closeLightbox()" aria-label="Zavřít náhled">&times;</button>
-        <div class="modal-content" id="lightboxContent">
-            <img id="lightboxImage" alt="Zvětšený obrázek">
-        </div>
-    </div>
-</section>
-
-      <script>
-        // Lightbox accessibility & behavior
-        (function (){
-            const modal = document.getElementById("myLightbox");
-            const img = document.getElementById("lightboxImage");
-            let lastActive = null;
-
-            window.openLightbox = function(src, alt) {
-                lastActive = document.activeElement;
-                const modal = document.getElementById("myLightbox");
-                const img = document.getElementById("lightboxImage");
-                img.src = src;
-                img.alt = alt || 'Zvětšený obrázek';
-                modal.style.display = 'block';
-                modal.focus();
-                // add key handler
-                document.addEventListener('keydown', onKeyDown);
-            }
-
-            window.closeLightbox = function() {
-                modal.style.display = 'none';
-                img.src = '';
-                document.removeEventListener('keydown', onKeyDown);
-                if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
-            }
-
-            function onKeyDown(e){
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            }
-
-            // close when clicking on backdrop (not on content)
-            modal.addEventListener('click', function(e){
-                if (e.target === modal) closeLightbox();
-            });
-        })();
-    </script>
-     
-        </section>
-
-       <section id="mapa">
-            <h2>Kde nás najdete</h2>
-            
-            <div class="map-wrapper">
-                <div class="map-frame">
-                    <iframe
-                        title="Mapa lokace Psí Hotel Čtyřlístek"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.1372333062254!2d21.810070688062158!3d48.79835939738533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ecce7b69ff48b%3A0x707cc68166a509e5!2s123%2045%2C%20Lesn%C3%A9%205%2C%20071%2001%20Lesn%C3%A9%2C%20Slovensko!5e0!3m2!1scs!2scz!4v1760715116921!5m2!1scs!2scz"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            <p style="text-align: center; margin-top: 10px;">Přesná adresa: Lesní 5, 123 45 Psíkov</p>
+                <form class="d-flex align-items-center"
+                    onsubmit="event.preventDefault(); alert('Děkujeme za přihlášení!');">
+                    <label for="newsletterEmail" class="visually-hidden">Email</label>
+                    <input id="newsletterEmail" type="email" class="form-control" placeholder="Váš email" required
+                        style="min-width:220px;">
+                    <button class="btn btn-warning ms-2" type="submit">Přihlásit</button>
+                </form>
             </div>
         </section>
 
-        <section id="cenik" class = "contacts">
+        <section id="o-nas">
+            <h2>Proč si vybrat nás?</h2>
+            <p>Jsme rodinný psí hotel s více než 10 lety zkušeností. Nabízíme individuální přístup, celodenní dohled a
+                velké výběhy pro volné hraní. U nás je každý pes šťastný!</p>
+        </section>
+        <!-- Služby / Grid s kartami (responzivní) -->
+        <section id="sluzby" class="mt-4">
+            <div class="container">
+                <h2 class="text-center">Naše služby</h2>
+                <div class="row g-4 mt-3">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg"
+                                class="card-img-top img-fluid" alt="Ubytování">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Komfortní ubytování</h5>
+                                <p class="card-text flex-grow-1">Soukromé pelechy, pravidelné venčení a klidné noci.</p>
+                                <a href="#cenik" class="btn btn-sm btn-outline-success mt-2">Více</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            <img src="https://cdn.pixabay.com/photo/2015/05/01/10/38/agility-748245_640.jpg"
+                                class="card-img-top img-fluid" alt="Výběhy">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Velké výběhy</h5>
+                                <p class="card-text flex-grow-1">Zabezpečené plochy pro volné hrátky a socializaci psů.
+                                </p>
+                                <a href="#galerie" class="btn btn-sm btn-outline-success mt-2">Galerie</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg"
+                                class="card-img-top img-fluid" alt="Péče">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Individuální péče</h5>
+                                <p class="card-text flex-grow-1">Speciální dietní plány, podávání léků a denní reporty.
+                                </p>
+                                <a href="#kontakt" class="btn btn-sm btn-outline-success mt-2">Kontakt</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerie">
+            <h2> 🐶 Naše galerie psího hotelu</h2>
+
+            <div class="gallery-container">
+
+                <!-- Obrázek 1 -->
+                <button class="gallery-item"
+                    onclick="openLightbox('https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg', 'Standardní pokoj')"
+                    aria-label="Otevřít obrázek: Standardní pokoj">
+                    <img src="https://cdn.pixabay.com/photo/2025/01/18/01/56/dog-9341189_640.jpg" alt="Standardní pokoj"
+                        loading="lazy">
+                </button>
+                <!-- Opravený obrázek 2 – výběh -->
+                <button class="gallery-item"
+                    onclick="openLightbox('https://pixabay.com/get/g29b0474372a19ee312843b5db349a890ef7520e6e1be698c5d16a8c6c43f8b9ab7181091afa0771e9dac49c07837b968b55fbfe263dd125f113a155ac4af4925639f4df1c75f556cef47b00c6ddff2c3_640.jpg','Velký venkovní výběh')"
+                    aria-label="Otevřít obrázek: Velký venkovní výběh">
+                    <img src="https://pixabay.com/get/g29b0474372a19ee312843b5db349a890ef7520e6e1be698c5d16a8c6c43f8b9ab7181091afa0771e9dac49c07837b968b55fbfe263dd125f113a155ac4af4925639f4df1c75f556cef47b00c6ddff2c3_640.jpg"
+                        alt="Velký venkovní výběh" loading="lazy"
+                        style="object-fit: cover; width: 100%; height: 100%; object-position: center;">
+                </button>
+
+
+                <!-- Obrázek 3 -->
+                <button class="gallery-item"
+                    onclick="openLightbox('https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg', 'Čas krmení')"
+                    aria-label="Otevřít obrázek: Čas krmení">
+                    <img src="https://cdn.pixabay.com/photo/2017/09/02/08/53/golden-retriever-puppy-2706672_640.jpg"
+                        alt="Čas krmení" loading="lazy">
+                </button>
+
+            </div>
+
+            <!-- Lightbox zůstává beze změn -->
+            <div id="myLightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek"
+                tabindex="-1">
+                <button class="close-btn" onclick="closeLightbox()" aria-label="Zavřít náhled">&times;</button>
+                <div class="modal-content" id="lightboxContent">
+                    <img id="lightboxImage" alt="Zvětšený obrázek">
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Lightbox accessibility & behavior
+            (function () {
+                const modal = document.getElementById("myLightbox");
+                const img = document.getElementById("lightboxImage");
+                let lastActive = null;
+
+                window.openLightbox = function (src, alt) {
+                    lastActive = document.activeElement;
+                    const modal = document.getElementById("myLightbox");
+                    const img = document.getElementById("lightboxImage");
+                    img.src = src;
+                    img.alt = alt || 'Zvětšený obrázek';
+                    modal.style.display = 'block';
+                    modal.focus();
+                    // add key handler
+                    document.addEventListener('keydown', onKeyDown);
+                }
+
+                window.closeLightbox = function () {
+                    modal.style.display = 'none';
+                    img.src = '';
+                    document.removeEventListener('keydown', onKeyDown);
+                    if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+                }
+
+                function onKeyDown(e) {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    }
+                }
+
+                // close when clicking on backdrop (not on content)
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) closeLightbox();
+                });
+            })();
+        </script>
+
+        </section>
+
+        <section id="mapa">
+            <h2>Kde nás najdete</h2>
+
+            <div class="map-wrapper">
+                <div class="map-frame">
+                    <iframe title="Mapa lokace Psí Hotel Čtyřlístek"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.1372333062254!2d21.810070688062158!3d48.79835939738533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ecce7b69ff48b%3A0x707cc68166a509e5!2s123%2045%2C%20Lesn%C3%A9%205%2C%20071%2001%20Lesn%C3%A9%2C%20Slovensko!5e0!3m2!1scs!2scz!4v1760715116921!5m2!1scs!2scz"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 10px;">Přesná adresa: Lesní 5, 123 45 Psíkov</p>
+            </div>
+        </section>
+
+        <section id="cenik" class="contacts">
             <h2>
                 Ceník služeb
             </h2>
-            <p> 
+            <p>
                 Nabízíme konkurenceschopné ceny za kvalitní péči o vašeho mazlíčka:
             </p>
-             <ul>
+            <ul>
                 <li>Denní pobyt: 300 Kč/den</li>
                 <li>Celodenní péče s ubytováním: 600 Kč/den</li>
                 <li>Speciální péče (léky, diety): +150 Kč/den</li>
-                <li>Slevy pro dlouhodobé pobyty (více než 7 dní): 10% sleva</li>  
+                <li>Slevy pro dlouhodobé pobyty (více než 7 dní): 10% sleva</li>
             </ul>
             <hr>
             <p>Pro více informací nás neváhejte kontaktovat!</p>
-        
         </section>
 
-        <section id="video">
-    <h2>🎥 Podívejte se na náš psí hotel v akci!</h2>
-    <div style="text-align: center; margin-top: 20px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/2qudlMlXa_4"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
-    </div>
-    </section>
+        <section id="video" class="mb-4">
+            <h2>🎥 Podívejte se na náš psí hotel v akci!</h2>
+            <div class="video-container"
+                style="width: 560px; height: 315px; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
+                <iframe style="width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/2qudlMlXa_4"
+                    title="Prohlídka psího hotelu"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+            <div class="text-center mt-3">
+                <p>Pokud se video nenačte, můžete si ho prohlédnout přímo na YouTube:</p>
+                <a href="https://youtu.be/2qudlMlXa_4" target="_blank" rel="noopener" class="btn btn-outline-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-youtube mb-1 me-1" viewBox="0 0 16 16">
+                        <path
+                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                    </svg>
+                    Přehrát na YouTube
+                </a>
+            </div>
+        </section>
 
-       <section id="kontakt" class="contacts-container">
-        <h2>Kontaktní informace a provozní doba</h2>
+        <section id="kontakt" class="contacts-container">
+            <h2>Kontaktní informace a provozní doba</h2>
             <p><strong>Adresa:</strong> Lesní 5, 123 45 Psíkov</p>
             <p><strong>Telefon:</strong> +420 123 456 789</p>
             <p><strong>Email:</strong> info@psihotelctyrlistek.cz</p>
@@ -465,76 +538,85 @@
                 <li>Neděle: Pouze po domluvě</li>
             </ul>
             <hr>
-        
-                <div class="contact-container">
-        <h2 class="text-center">Rezervační / kontaktní formulář</h2>
-                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="p-3 bg-light rounded" novalidate>
-                        <div class="row g-2">
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="name" class="form-label">Jméno (povinně)</label>
-                                <input type="text" id="name" name="name" class="form-control" required aria-required="true" placeholder="Jan">
-                            </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="surname" class="form-label">Příjmení (povinně)</label>
-                                <input type="text" id="surname" name="surname" class="form-control" required aria-required="true" placeholder="Novák">
-                            </div>
-                             <div class="col-12 col-md-6 mb-2">
-                                <label for="email" class="form-label">Email (povinně)</label>
-                                <input type="email" id="email" name="email" class="form-control" required aria-required="true" placeholder="jan.novak@seznam.cz">
-                            </div>
-                            <div class ="col-12 col-md-6 mb-2">
-                                <label for= "country" class="form-label">Země (volitelně)</label>
-                                <input type="text" id="country" name="country" class="form-control" placeholder = "Stát">
-                            </div>
-                            <div class ="col-12 col-md-6 mb-2">
-                                <label for="adresa" class="form-label">Adresa (volitelně)</label>
-                                <input type="text" id="adresa" name="adresa" class="form-control" placeholder="Ulice, Město, Číslo popisné, PSČ">
-                                </div>
-                            <div class="col-12 mb-2">
-                                <label for="phone" class="form-label">Telefon (volitelně)</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+420 123 456 789">
-                            </div>
-                            <div class="col-12 mb-2">
-                                <label for="message" class="form-label">Zpráva / poznámky</label>
-                                <textarea id="message" name="message" rows="4" class="form-control" required placeholder="Děkuji za možnost vyplnění formuláře."></textarea>
-                            </div>
-                            <div class="col-12 mb-2 form-check">
-                                <input type="checkbox" id="newsletter" name="newsletter" class="form-check-input">
-                                <label for="newsletter" class="form-check-label">Přihlásit k odběru novinek</label>
-                            </div>
-                            <div class="col-12 mb-3 form-check">
-                                <input type="checkbox" id="gdpr" name="gdpr" class="form-check-input" required aria-required="true">
-                                <label for="gdpr" class="form-check-label">
-                                    Souhlasím se zpracováním osobních údajů v souladu s GDPR*
-                                </label>
-                                <div class="form-text">* Povinné pole</div>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-success">Odeslat zprávu</button>
-                            </div>
-                        </div>
-                   </form>
-                </div>
 
-                <!-- Modal pro potvrzení odeslání -->
-                <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="confirmationModalLabel">Potvrzení odeslání</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zavřít"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Děkujeme za Vaši zprávu! Budeme Vás kontaktovat co nejdříve.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Zavřít</button>
-                            </div>
+            <div class="contact-container">
+                <h2 class="text-center">Rezervační / kontaktní formulář</h2>
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" class="p-3 bg-light rounded" novalidate>
+                    <div class="row g-2">
+                        <div class="col-12 col-md-6 mb-2">
+                            <label for="name" class="form-label">Jméno (povinně)</label>
+                            <input type="text" id="name" name="name" class="form-control" required aria-required="true"
+                                placeholder="Jan">
+                        </div>
+                        <div class="col-12 col-md-6 mb-2">
+                            <label for="surname" class="form-label">Příjmení (povinně)</label>
+                            <input type="text" id="surname" name="surname" class="form-control" required
+                                aria-required="true" placeholder="Novák">
+                        </div>
+                        <div class="col-12 col-md-6 mb-2">
+                            <label for="email" class="form-label">Email (povinně)</label>
+                            <input type="email" id="email" name="email" class="form-control" required
+                                aria-required="true" placeholder="jan.novak@seznam.cz">
+                        </div>
+                        <div class="col-12 col-md-6 mb-2">
+                            <label for="country" class="form-label">Země (volitelně)</label>
+                            <input type="text" id="country" name="country" class="form-control" placeholder="Stát">
+                        </div>
+                        <div class="col-12 col-md-6 mb-2">
+                            <label for="adresa" class="form-label">Adresa (volitelně)</label>
+                            <input type="text" id="adresa" name="adresa" class="form-control"
+                                placeholder="Ulice, Město, Číslo popisné, PSČ">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="phone" class="form-label">Telefon (volitelně)</label>
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                                placeholder="+420 123 456 789">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="message" class="form-label">Zpráva / poznámky</label>
+                            <textarea id="message" name="message" rows="4" class="form-control" required
+                                placeholder="Děkuji za možnost vyplnění formuláře."></textarea>
+                        </div>
+                        <div class="col-12 mb-2 form-check">
+                            <input type="checkbox" id="newsletter" name="newsletter" class="form-check-input">
+                            <label for="newsletter" class="form-check-label">Přihlásit k odběru novinek</label>
+                        </div>
+                        <div class="col-12 mb-3 form-check">
+                            <input type="checkbox" id="gdpr" name="gdpr" class="form-check-input" required
+                                aria-required="true">
+                            <label for="gdpr" class="form-check-label">
+                                Souhlasím se zpracováním osobních údajů v souladu s GDPR*
+                            </label>
+                            <div class="form-text">* Povinné pole</div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success">Odeslat zprávu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal pro potvrzení odeslání -->
+            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmationModalLabel">Potvrzení odeslání</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Zavřít"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Děkujeme za Vaši zprávu! Budeme Vás kontaktovat co nejdříve.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Zavřít</button>
                         </div>
                     </div>
                 </div>
             </div>
-         </section>
+    </div>
+    </section>
 
 
     </div>
@@ -544,9 +626,9 @@
     </footer>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Získat data z formuláře
             const formData = {
                 name: document.getElementById('name').value,
@@ -561,6 +643,7 @@
             console.log('Odeslaná data:', formData);
 
             // Vyčistit formulář
+            
             this.reset();
 
             // Zobrazit potvrzovací modal
@@ -570,4 +653,5 @@
     </script>
 
 </body>
+
 </html>
