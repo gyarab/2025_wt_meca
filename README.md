@@ -7,5 +7,6 @@ Repozitář obsahuje:
 - První HTML soubor v adresáři `prvni_stranka/`.
 - První prolinkovaný web na pokusy s Bootstrapem 5.3.8 v adresáři `prvni_web/`.
 - Responzivní one-page validní HTML5 webovou stránku s Bootstrapem 5.3.8 v adresáři `microsite/`
+- Statický web v adresáři `github/workflows/`
 
 
