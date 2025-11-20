@@ -55,6 +55,24 @@
             const messageEl = document.getElementById('message');
             const inputEl = document.getElementById('guess');
 
+        // Zákaz hodnot mimo 1–20
+            function limitInput() {
+                let value = Number(inputEl.value);
+
+                if (value < 1) {
+                console.log("Číslo nesmí být menší než 1, opravuji.");
+                inputEl.value = 1;
+                }
+        
+                if (value > 20) {
+                console.log("Číslo nesmí být větší než 20, opravuji.");
+                inputEl.value = 20;
+                }
+            }   
+
+            inputEl.addEventListener("input", limitInput);
+            
+
             function newGame() {
                 support(); // podpora uživatele s timeoutem
                 secretNumber = Math.floor(Math.random() * 20) + 1;
