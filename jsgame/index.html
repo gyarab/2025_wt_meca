@@ -55,30 +55,43 @@
             // TODO funkce pro inicializaci hry
             function newGame() {
                 support() // podpora uzivatelu
-              secretNumber = Math.floor(Math.random() * 20) + 1
-              attempts = 0
-              console.log('---NOVA HRA---')
-              console.log('Tajne cislo je: ' + secretNumber)
-            }
-            function checkGuess() {
-                 attempts++
-                 const inputEl = document.getElementById('guess')
-                 const attemptsEl = document.getElementById('attempts')
-                 const guess = Number(inputEl.value)
-                    
-                 attemptsEl.textContent = attempts
-                //TODO funkce pro kontrolu hadaneho cisla
+                secretNumber = Math.floor(Math.random() * 20) + 1
+                attempts = 0
+                attemptsEl.textContent = attempts
+                
+                console.log('---NOVA HRA---')
+                console.log('tajne cislo je: ' + secretNumber)
             }
 
-            document.getElementById("guessBtn").addEventListener('click', checkGuess)     
-            document.getElementById("guess").addEventListener('keydown', function(e) {
+            function checkGuess() {
+                attempts++                  
+                const attemptsEl = document.getElementById('attempts')                
+
+                const inputEl = document.getElementById('guess')
+                const guess = Number(inputEl.value)
+                    
+                attemptsEl.textContent = attempts
+                // TODO funkce pro kontrolu hadani cisla a vypis vysledku do elementu messageEl
+            }
+
+            document.getElementById('guessBtn').addEventListener('click', checkGuess)     
+            document.getElementById('guess').addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
                     checkGuess()
+                    e.srcElement.value = ''
                 }
             })
 
-            newGame()
+  	        function hlaska() {
+            	alert('Pospěšte si, hra běží!')
+            }
 
+            function support() {
+    	        // zobrazeni hlasky po 10 sekundach
+                window.setTimeout(hlaska, 10000)
+            }
+
+            newGame()
         </script>
-</body>
-</html>
+    </body>
+    </html>
