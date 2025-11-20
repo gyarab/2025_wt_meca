@@ -1,31 +1,60 @@
 <!DOCTYPE html> 
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> JS Game </title>
+    <title>JS Game</title>
 
+    <style>
+          body {
+            font-family: system-ui, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        input {
+            padding: 3px;
+            margin: 6px;
+            font-size: 1rem;
+            width: 80px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 1rem;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-    <body>
+<body>
         <h1> Welcome to the JS Game! </h1>
-        <p> Hadej cislo od 1 do 20</p>
-        <input id="newGameBtn" type = "button" value = "New Game" pmclick="newGame()">    
+        <p id="message">
+        Hádej číslo od 1 do 20
+        </p>
+       
+        <input id="guess" type="number" name="guess">
+        <input id="guessBtn" type="button" value="Zkus">
         <br>
-        <label for="guess">Tvuj tip</label>
-        <input id = "guess" type = "number" name = "guess" min = "0">
-        <input id = "guessBtn" type = "button" value = "Zkus">
-        
+        <input id="newGameBtn" type="button" value="Nova hra" onclick="newGame()">
+
         <p>
-            Pocet pokusu: <span id="attempts">0</span>
+        Počet pokusů <span id="attempts">0</span>.
         </p>
         
         <script>
             let secretNumber
             let attempts
 
+            const attemptsEl = document.getElementById('attempts')
+            const messageEl = document.getElementById('message')
+
             // TODO funkce pro inicializaci hry
             function newGame() {
+                support() // podpora uzivatelu
               secretNumber = Math.floor(Math.random() * 20) + 1
               attempts = 0
               console.log('---NOVA HRA---')
