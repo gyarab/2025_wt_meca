@@ -1,55 +1,215 @@
 <!DOCTYPE html> 
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> JS Game </title>
+    <title>JS Game</title>
 
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        input {
+            padding: 3px;
+            margin: 6px;
+            font-size: 1rem;
+            width: 80px;
+        }
+        button, input[type=button] {
+            padding: 6px 12px;
+            font-size: 1rem;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        #history {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        #history span {
+            display: inline-block;
+            margin: 2px 4px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #eee;
+        }
+    </style>
 </head>
-    <body>
-        <h1> Welcome to the JS Game! </h1>
-        <p> Hadej cislo od 1 do 20</p>
-        <input id="newGameBtn" type = "button" value = "New Game" pmclick="newGame()">    
-        <br>
-        <label for="guess">Tvuj tip</label>
-        <input id = "guess" type = "number" name = "guess" min = "0">
-        <input id = "guessBtn" type = "button" value = "Zkus">
+<body>
+    <h1> Welcome to the JS Game! </h1>
+
+    <!-- Input pro maximální číslo -->
+    <p>
+        Maximální číslo:
+        <input id="maxRange" type="number" value="20" min="5" max="500">
+    </p>
+
+    <p id="message">Hádej číslo od 1 do 20</p>
+       
+    <input id="guess" type="number" name="guess">
+    <input id="guessBtn" type="button" value="Zkus">
+    <br>
+    <input id="newGameBtn" type="button" value="Nova hra" onclick="newGame()">
+
+    <div id="history">Tipy: </div>
+
+    <p>Počet pokusů <span id="attempts">0</span>.</p>
         
-        <p>
-            Pocet pokusu: <span id="attempts">0</span>
-        </p>
-        
-        <script>
-            let secretNumber
-            let attempts
+    <script>
+        let secretNumber;
+        let attempts;
+        const maxAttempts = 10;
+        let maxRange = 20;
+        let inactivityTimer;
+        const guesses = []; // historie tipů
 
-            // TODO funkce pro inicializaci hry
-            function newGame() {
-              secretNumber = Math.floor(Math.random() * 20) + 1
-              attempts = 0
-              console.log('---NOVA HRA---')
-              console.log('Tajne cislo je: ' + secretNumber)
+        const attemptsEl = document.getElementById('attempts');
+        const messageEl = document.getElementById('message');
+        const inputEl = document.getElementById('guess');
+        const maxRangeEl = document.getElementById('maxRange');
+        const historyEl = document.getElementById('history');
+
+        // -----------------------------
+        // Funkce pro start nové hry
+        // -----------------------------
+        function newGame() {
+            resetTimer();
+
+            maxRange = Number(maxRangeEl.value);
+            if (maxRange < 5) maxRange = 5;
+            if (maxRange > 500) maxRange = 500;
+            maxRangeEl.value = maxRange;
+
+            secretNumber = Math.floor(Math.random() * maxRange) + 1;
+
+            attempts = 0;
+            attemptsEl.textContent = attempts;
+
+            messageEl.textContent = `Hádej číslo od 1 do ${maxRange}`;
+            messageEl.style.color = 'black';
+
+            inputEl.disabled = false;
+            inputEl.value = '';
+
+            // vyčistit historii tipů
+            guesses.length = 0;
+            updateHistory();
+
+            console.log('--- NOVÁ HRA ---');
+            console.log('Max rozsah:', maxRange);
+            console.log('Tajné číslo:', secretNumber);
+        }
+
+        // -----------------------------
+        // Funkce pro konec hry
+        // -----------------------------
+        function endGame(text, color) {
+            messageEl.textContent = text;
+            messageEl.style.color = color;
+            inputEl.disabled = true;
+            console.log(text);
+        }
+
+        // -----------------------------
+        // Kontrola tipů hráče
+        // -----------------------------
+        function checkGuess() {
+            if (inputEl.disabled) return;
+
+            resetTimer();
+
+            attempts++;
+            attemptsEl.textContent = attempts;
+
+            let guess = Number(inputEl.value);
+            console.log("Tip hráče:", guess);
+
+            if (!guess) {
+                messageEl.textContent = "Zadej číslo!";
+                return;
             }
-            function checkGuess() {
-                 attempts++
-                 const inputEl = document.getElementById('guess')
-                 const attemptsEl = document.getElementById('attempts')
-                 const guess = Number(inputEl.value)
-                    
-                 attemptsEl.textContent = attempts
-                //TODO funkce pro kontrolu hadaneho cisla
+
+            // uložit tip do historie
+            guesses.push(guess);
+            updateHistory();
+
+            if (attempts >= maxAttempts && guess !== secretNumber) {
+                endGame(`Konec hry! Došly ti pokusy! Správné číslo bylo ${secretNumber}.`, "red");
+                return;
             }
 
-            document.getElementById("guessBtn").addEventListener('click', checkGuess)     
-            document.getElementById("guess").addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    checkGuess()
-                }
-            })
+            if (guess === secretNumber) {
+                endGame("Vyhrál jsi! 🎉", "green");
+                return;
+            }
 
-            newGame()
+            if (guess < secretNumber) {
+                messageEl.textContent = "Zkus větší číslo!";
+            } else {
+                messageEl.textContent = "Zkus menší číslo!";
+            }
+        }
 
-        </script>
+        // -----------------------------
+        // Aktualizace historie tipů
+        // -----------------------------
+        function updateHistory() {
+            historyEl.innerHTML = 'Tipy: ';
+            guesses.forEach(g => {
+                const span = document.createElement('span');
+                span.textContent = g;
+                historyEl.appendChild(span);
+            });
+        }
+
+        // -----------------------------
+        // Omezení vstupu hráče na rozsah 1–maxRange
+        // -----------------------------
+        function limitInput() {
+            let value = Number(inputEl.value);
+
+            if (value < 1) {
+                console.log("Číslo nesmí být menší než 1, opravuji.");
+                inputEl.value = 1;
+            }
+            if (value > maxRange) {
+                console.log(`Číslo nesmí být větší než ${maxRange}, opravuji.`);
+                inputEl.value = maxRange;
+            }
+        }
+
+        // -----------------------------
+        // Inactivity alert (jen pokud hráč nic nedělá)
+        // -----------------------------
+        function resetTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                alert('Pospěšte si, hra běží!');
+            }, 10000); // 10 sekund nečinnosti
+        }
+
+        // -----------------------------
+        // Event listenery
+        // -----------------------------
+        document.getElementById('guessBtn').addEventListener('click', checkGuess);
+        inputEl.addEventListener("input", limitInput);
+        inputEl.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkGuess();
+                e.srcElement.value = '';
+            }
+        });
+
+        // start hry při načtení stránky
+        newGame();
+    </script>
 </body>
 </html>
