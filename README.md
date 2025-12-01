@@ -8,5 +8,6 @@ Repozitář obsahuje:
 - První prolinkovaný web na pokusy s Bootstrapem 5.3.8 v adresáři `prvni_web/`.
 - Responzivní one-page validní HTML5 webovou stránku s Bootstrapem 5.3.8 v adresáři `microsite/`
 - Statický web v adresáři `github/workflows/`
+- Psychologie barev - logo společnosti referát v souboru `color.md`.
 
 
