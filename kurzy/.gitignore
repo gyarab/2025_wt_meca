@@ -1,0 +1,6 @@
+# Ignoruje virtuální prostředí
+venv/
+
+# Ignoruje Python cache soubory
+__pycache__/
+*.pyc
