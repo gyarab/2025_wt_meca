@@ -1,6 +1,9 @@
 # Ignoruje virtuální prostředí
-venv/
+kurzy/venv/
 
 # Ignoruje Python cache soubory
 __pycache__/
 *.pyc
+
+# Ignoruje systémové soubory
+*.DS_Store
